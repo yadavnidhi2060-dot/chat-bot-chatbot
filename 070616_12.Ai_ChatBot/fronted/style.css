@@ -1,0 +1,319 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    width: 100%;
+    height: 100vh;
+}
+.chat-container{
+    width: 100%;
+    height: 80%;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    font-size: 20px;
+    overflow: auto;
+}
+.user-chat-box{
+    width: 60%;
+    position: relative;
+    left:40%;
+}
+.ai-chat-box{
+    width: 60%;
+    position: relative;
+}
+.user-chat-area{
+    width: 90%;
+    padding: 20px;
+    background-color: black;
+    color:rgba(255, 255, 255, 0.639);
+    border-radius: 40px 0px 40px 40px;
+    box-shadow: 2px 2px 10px black;
+    display: flex;
+    gap:10px;
+    flex-direction: column;
+}
+.chooseimg{
+    width: 30%;
+    border-radius: 30px;
+}
+.ai-chat-area{
+    width: 90%;
+    padding: 20px;
+    background-color: #667eea;
+    position: relative;
+    left:10%;
+    color:rgba(255, 255, 255, 0.639);
+    border-radius: 0px 40px 40px 40px;
+    box-shadow: 2px 2px 10px black;
+}
+#userImage{
+    position: absolute;
+    right: 0;
+    filter:drop-shadow( 2px 2px 10px black);
+
+}
+#aiImage{
+    position: absolute;
+left:0;
+filter:drop-shadow( 2px 2px 10px black);
+}
+.prompt-area{
+    width: 100%;
+    height: 20%;
+    background-color: rgb(45, 52, 59);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px
+    
+}
+.prompt-area input{
+    width: 50%;
+    height: 80px;
+    background-color: black;
+    outline: none;
+    border:none;
+    border-radius: 50px;
+    padding: 20px;
+    color: white;
+    font-size: 20px;
+    box-shadow: 2px 2px 10px black;
+}
+.prompt-area button{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: black;
+    border:none;
+    box-shadow: 2px 2px 10px black;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.prompt-area button:hover{
+    background-color: rgba(0, 0, 0, 0.338);
+}
+.load{
+    filter:drop-shadow( 2px 2px 10px black)
+}
+.choose{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+#image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#voice{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width:600px) {
+    .user-chat-box{
+        width: 80%;
+        left:20%
+    }
+    .ai-chat-box{
+        width: 80%;
+    }
+    
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+ 
+  /*
+ nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #ffffffef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw 8vw;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+}
+
+ nav img {
+    width: 70px;
+    cursor:pointer;
+ }
+ nav .navigation{
+    display: flex;
+ }
+ #menu-btn {
+    width: 30px;
+    height: 30px;
+    display: none;
+ }
+ #menu-close {
+    display: none;
+ }
+
+ nav .navigation ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: normal;
+ }
+
+ nav .navigation ul li{
+    list-style: none;
+    margin-left: 30px;
+
+ }
+ 
+ nav .navigation ul li a{
+    text-decoration: none;
+    color: rgb( 21 ,21 ,100);
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s ease;
+ }
+
+ nav .navigation ul li a:hover {
+    color: #7494ec;
+ }*/ nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .prompt-area {
+    width: 100%;
+    height: 20%;
+    background-color: rgb(45, 52, 59);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 20px;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 50%;
+}
+
+.input-wrapper input[type="text"] {
+    width: 100%;
+    height: 80px;
+    background-color:#667eea;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    padding: 20px 120px 20px 20px; /* space for icons on right */
+    color: white;
+    font-size: 20px;
+    box-shadow: 2px 2px 10px black;
+}
+
+.icon-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.icon-button img,
+.icon-button i {
+    width: 24px;
+    height: 24px;
+    color: white;
+}
+
+#voice {
+    right: 20px;
+}
+
+label[for="fileUpload"] {
+    right: 60px;
+    position: absolute;
+}
+
+.prompt-area button#submit {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color:#667eea;
+    border: none;
+    box-shadow: 2px 2px 10px black;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prompt-area button#submit:hover {
+    background-color: rgba(0, 0, 0, 0.338);
+}
+
+
+
+    
+ 

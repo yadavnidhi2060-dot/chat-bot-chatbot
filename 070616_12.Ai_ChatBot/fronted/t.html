@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accident First Aid & Legal Report</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f7fa;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1, h2 {
+        color: #2a6ebb;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    form {
+        background: #fff;
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        max-width: 800px;
+    }
+
+    label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+
+    button {
+        background: #3b82f6;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background: #2a6ebb;
+    }
+
+    section {
+        margin-bottom: 40px;
+    }
+
+    .highlight {
+        background-color: #e1f0ff;
+        padding: 10px;
+        border-left: 5px solid #3b82f6;
+        margin-bottom: 20px;
+    }
+    /* Header / Navbar */
+        /*nav {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 50px;
+            background-color: #a0571bd5;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }*/
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+    
+
+</style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Medi<span>lex</span></div>
+        <div class="nav-links">
+            <a href="m.html">Home</a>
+            <a href="gl.html">Government Law</a>
+            <a href="ind1.html">Template</a>
+            <a href="t.html">Person Info</a>
+        </div>
+    </nav>
+    
+<h1>Accident First Aid & Legal Report</h1>
+
+<form>
+    <!-- Section 1: Accident First Aid Report -->
+    <section id="accident-report">
+        <h2>1. Accident First Aid Report</h2>
+        <label for="reporter_name">Your Name:</label>
+        <input type="text" id="reporter_name" name="reporter_name" required>
+
+        <label for="reporter_contact">Contact Number:</label>
+        <input type="tel" id="reporter_contact" name="reporter_contact" required>
+
+        <label for="accident_date">Date of Accident:</label>
+        <input type="date" id="accident_date" name="accident_date" required>
+
+        <label for="accident_location">Accident Location:</label>
+        <input type="text" id="accident_location" name="accident_location" required>
+
+        <label for="injuries">Injuries Observed:</label>
+        <textarea id="injuries" name="injuries" rows="4" required></textarea>
+
+        <label for="actions_taken">First Aid Actions Taken:</label>
+        <textarea id="actions_taken" name="actions_taken" rows="4" required></textarea>
+    </section>
+
+    <!-- Section 2: Good Samaritan Acknowledgement -->
+    <section id="good-samaritan">
+        <h2>2. Good Samaritan Legal Acknowledgement</h2>
+        <div class="highlight">
+            Acting in good faith while providing emergency assistance is protected under the Good Samaritan Law.
+        </div>
+
+        <label for="helper_name">Helper's Name:</label>
+        <input type="text" id="helper_name" name="helper_name" required>
+
+        <label for="helper_contact">Contact Number:</label>
+        <input type="tel" id="helper_contact" name="helper_contact" required>
+
+        <label for="assistance_type">Type of Assistance Provided:</label>
+        <select id="assistance_type" name="assistance_type" required>
+            <option value="">Select Assistance</option>
+            <option value="first_aid">First Aid</option>
+            <option value="emergency_call">Emergency Call</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="assistance_details">Details of Assistance:</label>
+        <textarea id="assistance_details" name="assistance_details" rows="4" required></textarea>
+
+        <label>
+            <input type="checkbox" required> I acknowledge that I acted in good faith and understand my legal rights.
+        </label>
+    </section>
+    <!-- Section 3: Emergency Contact & Witness Form -->
+    <section id="witness-form">
+        <h2>3. Emergency Contact & Witness Details</h2>
+
+        <label for="victim_name">Victim Name:</label>
+        <input type="text" id="victim_name" name="victim_name" required>
+
+        <label for="witness_name">Witness Name:</label>
+        <input type="text" id="witness_name" name="witness_name" required>
+
+        <label for="witness_contact">Witness Contact Number:</label>
+        <input type="tel" id="witness_contact" name="witness_contact" required>
+
+        <label for="incident_details">Incident Details:</label>
+        <textarea id="incident_details" name="incident_details" rows="4" required></textarea>
+
+        <label for="emergency_contact">Emergency Contact for Victim:</label>
+        <input type="text" id="emergency_contact" name="emergency_contact" required>
+    </section>
+
+    <button type="submit">Submit Full Report</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Tips</title>
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    padding: 20px;
+    margin: 0;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Filter Buttons */
+.filters {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.filters button {
+    padding: 10px 18px;
+    margin: 5px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #007BFF, #00B4DB);
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.filters button.active,
+.filters button:hover {
+    background: linear-gradient(90deg, #0056b3, #007BFF);
+    transform: scale(1.05);
+}
+
+/* Search Box */
+.search-container {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.search-container input {
+    padding: 12px;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: box-shadow 0.3s;
+}
+
+.search-container input:focus {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Cards Grid */
+.health-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.health-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.health-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 5px;
+    background: linear-gradient(90deg, #007BFF, #00B4DB);
+}
+
+.health-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.health-card h3 {
+    margin-top: 10px;
+    color: #222;
+}
+
+.health-card p {
+    margin: 6px 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+.health-card .type {
+    font-weight: bold;
+    color: #007BFF;
+}
+  /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+         
+
+
+         
+</style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Medi<span>lex</span></div>
+        <div class="nav-links">
+            <a href="m.html">Home</a>
+            <a href="gl.html">Government Law</a>
+            <a href="ind1.html">Template</a>
+            <a href="t.html">Person Info</a>
+        </div>
+    </nav>
+
+
+
+<h1>🌱 Health Tips</h1>
+
+<div class="filters">
+  <button data-filter="All" class="active">All</button>
+  <button data-filter="Beauty Health">Beauty</button>
+  <button data-filter="Fitness">Fitness</button>
+  <button data-filter="Nutrition">Nutrition</button>
+  <button data-filter="Mental Health">Mental</button>
+  <button data-filter="General Health">General</button>
+  <button data-filter="Dental Health">Dental</button>
+</div>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="🔍 Search health tips...">
+</div>
+
+<div class="health-container" id="healthContainer"></div>
+
+<script>
+const healthContainer = document.getElementById("healthContainer");
+const filterButtons = document.querySelectorAll(".filters button");
+const searchInput = document.getElementById("searchInput");
+
+// 50+ Health Tips
+const healthTips = [
+  {"title":"Stay Hydrated","type":"General Health","tip":"Drink at least 8 glasses of water daily."},
+  {"title":"Exercise Regularly","type":"Fitness","tip":"Do at least 30 minutes of exercise daily."},
+  {"title":"Eat Balanced Diet","type":"Nutrition","tip":"Include fruits, vegetables, proteins, and carbs."},
+  {"title":"Get Enough Sleep","type":"General Health","tip":"Sleep 7-8 hours per night for better health."},
+  {"title":"Protect Your Skin","type":"Beauty Health","tip":"Use sunscreen to protect from UV rays."},
+  {"title":"Meditate Daily","type":"Mental Health","tip":"Practice meditation for at least 10 minutes a day."},
+  {"title":"Limit Sugar Intake","type":"Nutrition","tip":"Reduce consumption of sugary drinks and snacks."},
+  {"title":"Wash Hands Frequently","type":"General Health","tip":"Wash hands with soap to prevent infections."},
+  {"title":"Maintain Good Posture","type":"Fitness","tip":"Sit and stand straight to avoid back pain."},
+  {"title":"Brush Twice Daily","type":"Dental Health","tip":"Brush teeth morning and night for oral hygiene."},
+  {"title":"Stay Socially Connected","type":"Mental Health","tip":"Connect with family and friends regularly."},
+  {"title":"Stretch Daily","type":"Fitness","tip":"Stretching reduces muscle tension and improves flexibility."},
+  {"title":"Avoid Junk Food","type":"Nutrition","tip":"Limit fast food to maintain good health."},
+  {"title":"Yoga Practice","type":"Fitness","tip":"Yoga improves flexibility, strength, and balance."},
+  {"title":"Laugh Often","type":"Mental Health","tip":"Laughter reduces stress hormones and boosts mood."},
+  {"title":"Eat Fruits Daily","type":"Nutrition","tip":"Fruits provide essential vitamins and fiber."},
+  {"title":"Apply Face Mask","type":"Beauty Health","tip":"Use natural face masks to rejuvenate skin."},
+  {"title":"Limit Alcohol","type":"General Health","tip":"Drink in moderation to protect liver and health."},
+  {"title":"Use Lip Balm","type":"Beauty Health","tip":"Prevent chapped lips by keeping them moisturized."},
+  {"title":"Cardio Exercises","type":"Fitness","tip":"Running, cycling, and swimming improve heart health."}
+];
+
+// Display tips
+function displayTips(tips) {
+    healthContainer.innerHTML = "";
+    if (tips.length === 0) {
+        healthContainer.innerHTML = "<p style='grid-column:1/-1; text-align:center; color:#555;'>No tips found.</p>";
+        return;
+    }
+    tips.forEach(tip => {
+        const card = document.createElement("div");
+        card.classList.add("health-card");
+        card.innerHTML = `
+            <h3>${tip.title}</h3>
+            <p class="type">${tip.type}</p>
+            <p>${tip.tip}</p>
+        `;
+        healthContainer.appendChild(card);
+    });
+}
+
+// Initial display
+displayTips(healthTips);
+
+// Filter buttons
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        const filter = button.getAttribute("data-filter");
+        let filteredTips = healthTips;
+        if (filter !== "All") {
+            filteredTips = healthTips.filter(tip => tip.type === filter);
+        }
+        const query = searchInput.value.trim().toLowerCase();
+        if (query) {
+            filteredTips = filteredTips.filter(tip =>
+                tip.title.toLowerCase().includes(query) ||
+                tip.tip.toLowerCase().includes(query)
+            );
+        }
+        displayTips(filteredTips);
+    });
+});
+
+// Search functionality
+searchInput.addEventListener("input", () => {
+    const query = searchInput.value.trim().toLowerCase();
+    const activeFilter = document.querySelector(".filters button.active").getAttribute("data-filter");
+    let filteredTips = healthTips;
+    if (activeFilter !== "All") {
+        filteredTips = filteredTips.filter(tip => tip.type === activeFilter);
+    }
+    if (query) {
+        filteredTips = filteredTips.filter(tip =>
+            tip.title.toLowerCase().includes(query) ||
+            tip.tip.toLowerCase().includes(query)
+        );
+    }
+    displayTips(filteredTips);
+});
+</script>
+
+</body>
+</html>

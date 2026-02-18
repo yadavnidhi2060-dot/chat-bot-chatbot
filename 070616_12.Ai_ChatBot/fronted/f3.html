@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediLax — Image Slider</title>
+  <link rel="stylesheet" href="f3.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">MediLex</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="a.html">About</a>
+      <a href="s.html">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+    <button class="btn">Sign In</button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>Your Health,<br>Our Priority</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <button class="btn">Get Started</button>
+    </div>
+
+    <!-- Slider -->
+    <div class="slider">
+      <div class="slides">
+        <img src="image1.png" alt="Doctor 1">
+        <img src="image2.png" alt="Doctor 2">
+        
+      </div>
+      <!-- Controls -->
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="service-cards">
+      <div class="card">
+        <div class="icon">+</div>
+        <h3>Medical</h3>
+        <p>Primary care, diagnostics and treatments.</p>
+      </div>
+      <div class="card">
+        <div class="icon">❤</div>
+        <h3>Emergency</h3>
+        <p>24/7 urgent care and rapid response.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚖</div>
+        <h3>Law</h3>
+        <p>Healthcare compliance and legal support.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> MediLax — All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const slides = document.querySelector(".slides");
+    const images = document.querySelectorAll(".slides img");
+    const prev = document.querySelector(".prev");
+    const next = document.querySelector(".next");
+
+    let index = 0;
+    //set dynamic width
+ slides.style.width='${image.length*100}%';
+  image.forEach(img=>{
+    img.style.width='${100/images.length}%';});
+    function showSlide(i) {
+      if (i >= images.length) index = 0;
+      if (i < 0) index = images.length - 1;
+      slides.style.transform = 
+      'translateX(${-index *(100/image.length)}%)';
+    }
+
+    next.addEventListener("click", () => {
+      index++;
+      showSlide(index);
+    });
+
+    prev.addEventListener("click", () => {
+      index--;
+      showSlide(index);
+    });
+
+    // Auto-slide every 4 seconds
+    setInterval(() => {
+      index++;
+      showSlide(index);
+    }, 4000);
+  </script>
+</body>
+</html>

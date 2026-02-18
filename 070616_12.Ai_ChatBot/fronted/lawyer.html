@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Legal Directory</title>
+<style>
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+         
+
+  body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+  }
+
+  body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,197.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
+      pointer-events: none;
+  }
+
+  .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+  }
+
+  header {
+      text-align: center;
+      margin-bottom: 50px;
+      animation: fadeInDown 0.8s ease;
+  }
+
+  h1 {
+      font-size: 3.5rem;
+      color: #ffffff;
+      text-shadow: 2px 4px 8px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+      font-weight: 700;
+      letter-spacing: -1px;
+  }
+
+  .subtitle {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 300;
+  }
+
+  .filters {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease 0.2s both;
+  }
+
+  .filters button {
+      padding: 14px 32px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+  }
+
+  .filters button:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+
+  .filters button.active {
+      background: white;
+      color: #667eea;
+      border-color: white;
+      box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+  }
+
+  .lawyer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+      animation: fadeInUp 0.8s ease 0.4s both;
+  }
+
+  .lawyer-card {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      animation: cardAppear 0.6s ease backwards;
+  }
+
+  .lawyer-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+  }
+
+  .lawyer-card:hover::before {
+      transform: scaleX(1);
+  }
+
+  .lawyer-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  }
+
+  .lawyer-card h2 {
+      font-size: 1.5rem;
+      color: #2d3748;
+      margin-bottom: 15px;
+      font-weight: 700;
+  }
+
+  .practice-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+  }
+
+  .practice-badge.indian {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+  }
+
+  .practice-badge.international {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+  }
+
+  .info-item {
+      display: flex;
+      align-items: center;
+      margin: 12px 0;
+      color: #4a5568;
+      font-size: 0.95rem;
+  }
+
+  .info-item strong {
+      min-width: 100px;
+      color: #2d3748;
+      font-weight: 600;
+  }
+
+  .cases-won {
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: white !important;
+      padding: 8px 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(56, 239, 125, 0.3);
+  }
+
+  .contact-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+  }
+
+  .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  .address {
+      font-size: 0.9rem;
+      color: #718096;
+      margin-top: 10px;
+      line-height: 1.5;
+  }
+
+  @keyframes fadeInDown {
+      from {
+          opacity: 0;
+          transform: translateY(-30px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+
+  @keyframes fadeInUp {
+      from {
+          opacity: 0;
+          transform: translateY(30px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+
+  @keyframes cardAppear {
+      from {
+          opacity: 0;
+          transform: scale(0.8);
+      }
+      to {
+          opacity: 1;
+          transform: scale(1);
+      }
+  }
+
+  @media (max-width: 768px) {
+      h1 {
+          font-size: 2.5rem;
+      }
+      
+      .lawyer-container {
+          grid-template-columns: 1fr;
+      }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>🏛️ Elite Legal Directory</h1>
+    <p class="subtitle">Connect with Top-Tier Legal Professionals</p>
+  </header>
+  <nav>
+        <div class="logo">Medi<span>lex</span></div>
+        <div class="nav-links">
+            <a href="m.html">Home</a>
+            <a href="gl.html">Government Law</a>
+            <a href="ind1.html">Template</a>
+            <a href="t.html">Person Info</a>
+        </div>
+    </nav>
+
+  <div class="filters">
+    <button data-filter="all" class="active">All Lawyers</button>
+    <button data-filter="Indian">Indian Practice</button>
+    <button data-filter="International">International Practice</button>
+  </div>
+
+  <div class="lawyer-container" id="lawyerContainer"></div>
+</div>
+
+<script>
+const lawyerContainer = document.getElementById("lawyerContainer");
+const filterButtons = document.querySelectorAll(".filters button");
+
+const lawyersData = [
+  {"name":"Amit Sharma","practice":"Indian","experience":"12 years","casesWon":120,"contact":"+91-9876543210","address":"Bank Road, Gorakhpur, UP, India"},
+  {"name":"Sarah Johnson","practice":"International","experience":"15 years","casesWon":200,"contact":"+1-202-555-0123","address":"New York, USA"},
+  {"name":"Rahul Mehta","practice":"Indian","experience":"10 years","casesWon":95,"contact":"+91-8765432109","address":"Civil Court, Gorakhpur, UP, India"},
+  {"name":"Emily Clark","practice":"International","experience":"12 years","casesWon":150,"contact":"+44-20-7946-0958","address":"London, UK"},
+  {"name":"Brijesh Prajapati","practice":"Indian","experience":"18 years","casesWon":180,"contact":"+91-9456781230","address":"Bank Road, Gorakhpur, UP, India"},
+  {"name":"Robert Smith","practice":"International","experience":"20 years","casesWon":250,"contact":"+1-310-555-0167","address":"Los Angeles, USA"},
+  {"name":"Bhanu Pratap Pandey","practice":"Indian","experience":"14 years","casesWon":130,"contact":"+91-9988776655","address":"Bank Road, Gorakhpur, UP, India"},
+  {"name":"Anita Desai","practice":"International","experience":"11 years","casesWon":140,"contact":"+61-2-9876-5432","address":"Sydney, Australia"},
+  {"name":"Sunil Kumar Srivastava","practice":"Indian","experience":"16 years","casesWon":160,"contact":"+91-9123456780","address":"Gorakhpur, UP, India"},
+  {"name":"Michael Brown","practice":"International","experience":"18 years","casesWon":210,"contact":"+1-212-555-0198","address":"New York, USA"},
+  {"name":"Rahul Tripathi","practice":"Indian","experience":"9 years","casesWon":85,"contact":"+91-9988771122","address":"Bank Road, Gorakhpur, UP, India"},
+  {"name":"Sophia Williams","practice":"International","experience":"14 years","casesWon":190,"contact":"+44-20-7946-0911","address":"London, UK"},
+  {"name":"Nishant Ranjan","practice":"Indian","experience":"11 years","casesWon":110,"contact":"+91-9876543321","address":"Civil Court, Gorakhpur, UP, India"},
+  {"name":"Laura Wilson","practice":"International","experience":"13 years","casesWon":170,"contact":"+1-415-555-0177","address":"San Francisco, USA"},
+  {"name":"Bharat Kumar","practice":"Indian","experience":"15 years","casesWon":140,"contact":"+91-9123456799","address":"Gorakhpur, UP, India"},
+  {"name":"David Johnson","practice":"International","experience":"17 years","casesWon":220,"contact":"+1-617-555-0129","address":"Boston, USA"},
+  {"name":"Satyendra Nath Pandey","practice":"Indian","experience":"13 years","casesWon":125,"contact":"+91-9988773344","address":"Bank Road, Gorakhpur, UP, India"},
+  {"name":"Olivia Martin","practice":"International","experience":"12 years","casesWon":180,"contact":"+44-20-7946-0987","address":"London, UK"},
+  {"name":"Sunil Mishra","practice":"Indian","experience":"10 years","casesWon":100,"contact":"+91-9876543245","address":"Gorakhpur, UP, India"},
+  {"name":"James Anderson","practice":"International","experience":"16 years","casesWon":200,"contact":"+1-202-555-0188","address":"Washington DC, USA"},
+  {"name":"Karuna Singh","practice":"Indian","experience":"12 years","casesWon":115,"contact":"+91-9876501122","address":"Bank Road, Gorakhpur, UP, India"},
+  {"name":"Emma Thompson","practice":"International","experience":"15 years","casesWon":190,"contact":"+44-20-7946-0201","address":"London, UK"},
+  {"name":"Adesh Singh","practice":"Indian","experience":"9 years","casesWon":90,"contact":"+91-9988775566","address":"Gorakhpur, UP, India"},
+  {"name":"Abhijeet Srivastava","practice":"Indian","experience":"14 years","casesWon":135,"contact":"+91-9123456701","address":"Bank Road, Gorakhpur, UP, India"},
+  {"name":"Anurag Shukla","practice":"Indian","experience":"11 years","casesWon":105,"contact":"+91-9876543109","address":"Civil Court, Gorakhpur, UP, India"},
+  {"name":"Emily White","practice":"International","experience":"13 years","casesWon":175,"contact":"+1-310-555-0189","address":"Los Angeles, USA"},
+  {"name":"Ravi Prakash Ojha","practice":"Indian","experience":"16 years","casesWon":150,"contact":"+91-9988774433","address":"Ghaghsara, Sahjanwa, Gorakhpur, UP, India"},
+  {"name":"Michael Scott","practice":"International","experience":"20 years","casesWon":250,"contact":"+1-212-555-0199","address":"New York, USA"},
+  {"name":"Nityanand Mishra","practice":"Indian","experience":"13 years","casesWon":120,"contact":"+91-9876543211","address":"Gorakhpur, UP, India"},
+  {"name":"Kaustubh Mani Tripathi","practice":"Indian","experience":"15 years","casesWon":145,"contact":"+91-9988776650","address":"Civil Court, Gorakhpur, UP, India"}
+];
+
+function displayLawyers(lawyers) {
+  lawyerContainer.innerHTML = '';
+  lawyers.forEach((lawyer, index) => {
+    const card = document.createElement('div');
+    card.classList.add('lawyer-card');
+    card.style.animationDelay = `${index * 0.05}s`;
+    
+    const badgeClass = lawyer.practice.toLowerCase();
+    
+    card.innerHTML = `
+      <h2>${lawyer.name}</h2>
+      <span class="practice-badge ${badgeClass}">${lawyer.practice} Practice</span>
+      <div class="info-item">
+        <strong>Experience:</strong>
+        <span>${lawyer.experience}</span>
+      </div>
+      <div class="cases-won">
+        🏆 ${lawyer.casesWon} Cases Won
+      </div>
+      <div class="address">
+        📍 ${lawyer.address}
+      </div>
+      <a href="tel:${lawyer.contact}" class="contact-btn">
+        📞 ${lawyer.contact}
+      </a>
+    `;
+    lawyerContainer.appendChild(card);
+  });
+}
+
+displayLawyers(lawyersData);
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    const filter = button.getAttribute('data-filter');
+    if(filter === 'all') {
+      displayLawyers(lawyersData);
+    } else {
+      const filtered = lawyersData.filter(lawyer => lawyer.practice === filter);
+      displayLawyers(filtered);
+    }
+  });
+});
+</script>
+
+</body>
+</html>

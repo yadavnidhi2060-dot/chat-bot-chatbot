@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MediLax — Black & White</title>
+  <link rel="stylesheet" href="f.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">
+      <!-- simple monochrome mark -->
+      <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden>
+        <rect x="2" y="8" width="8" height="8" rx="2" fill="#111"/>
+        <rect x="14" y="2" width="8" height="8" rx="2" fill="#333"/>
+      </svg>
+      <span class="logo">MediLax</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <div class="actions">
+      <button class="btn small">Sign In</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Your Health,<br/>Our Priority</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <button class="btn">Get Started</button>
+      </div>
+
+      <div class="hero-illustration" aria-hidden>
+        <!-- simple grayscale doctor illustration (SVG) -->
+        <svg viewBox="0 0 320 320" class="doctor-svg" xmlns="http://www.w3.org/2000/svg" role="img">
+          <defs>
+            <style>.s0{fill:#e9e9e9}.s1{fill:#cfcfcf}.s2{fill:#bdbdbd}.s3{fill:#a0a0a0}.s4{fill:#6b6b6b}</style>
+          </defs>
+          <rect x="0" y="0" width="320" height="320" fill="white"/>
+          <circle cx="160" cy="90" r="48" class="s2"/>
+          <path d="M120 160c0-24 40-32 80-32s80 8 80 32v60H120z" class="s0"/>
+          <rect x="140" y="170" width="8" height="70" class="s3" rx="4"/>
+          <rect x="172" y="170" width="8" height="70" class="s3" rx="4"/>
+          <path d="M98 170c14-6 28-10 54-10s40 4 56 10" fill="none" stroke="#9a9a9a" stroke-width="6" stroke-linecap="round"/>
+          <!-- stethoscope simplified -->
+          <path d="M210 160c4 10 20 14 28 6 8-8 8-28 0-34" stroke="#6b6b6b" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <circle cx="238" cy="138" r="8" class="s4"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services">
+      <h2>Our Services</h2>
+      <p class="lede">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+
+      <div class="cards">
+        <!-- Medical -->
+        <article class="card">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" class="icon">
+              <rect x="9" y="3" width="6" height="18" rx="1.5" fill="#111"/>
+              <rect x="3" y="9" width="18" height="6" rx="1.5" fill="#111"/>
+            </svg>
+          </div>
+          <h3>Medical</h3>
+          <p>Primary care, diagnostics and outpatient treatments.</p>
+        </article>
+
+        <!-- Emergency -->
+        <article class="card">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" class="icon">
+              <path d="M12 2 L15 9 H22 L17 13 L19 20 L12 15 L5 20 L7 13 L2 9 H9z" fill="#222"/>
+            </svg>
+          </div>
+          <h3>Emergency</h3>
+          <p>24/7 urgent care and rapid response services.</p>
+        </article>
+
+        <!-- Law -->
+        <article class="card">
+          <div class="icon-wrap">
+            <!-- Scales of justice SVG (monochrome) -->
+            <svg viewBox="0 0 24 24" class="icon">
+              <path d="M12 2v2m0 0v3m0 0h6m-6 0H6" stroke="#111" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 13c1.5-1.5 3.5-1.5 5 0" stroke="#111" stroke-width="1.5" fill="none"/>
+              <path d="M19 13c-1.5-1.5-3.5-1.5-5 0" stroke="#111" stroke-width="1.5" fill="none"/>
+              <circle cx="7" cy="16.5" r="2" fill="#111"/>
+              <circle cx="17" cy="16.5" r="2" fill="#111"/>
+            </svg>
+          </div>
+          <h3>Law</h3>
+          <p>Legal consultation and healthcare compliance support.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> MediLax — All rights reserved.</p>
+  </footer>
+
+  <script>
+    // set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

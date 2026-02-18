@@ -1,0 +1,92 @@
+/* General Black & White Theme */
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #fafafa;
+  color: #222;
+  line-height: 1.8;
+}
+
+/* Navbar - still clean but toned down */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  background: #000; /* black */
+  color: #fff;
+}
+
+.navbar nav a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: #ddd;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+
+/* About Hero Section */
+.about-hero {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.about-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%); /* black & white filter */
+}
+
+.about-hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5); /* dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.about-hero h1 {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+/* About Content */
+.about-content {
+  padding: 60px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.about-content h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #000;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.about-content p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Footer */
+.footer {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}

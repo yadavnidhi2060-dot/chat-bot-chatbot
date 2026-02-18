@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samaritan Law Awareness</title>
+  <style>
+    /* ======== RESET & BASE ======== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #f6f7fb, #eae8ff);
+      color: #2e2e2e;
+      line-height: 1.6;
+    }
+
+    /* ======== HEADER ======== */
+    header {
+      background: linear-gradient(135deg, #6a3fa0, #a0571b);
+      color: #fff;
+      text-align: center;
+      padding: 70px 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      animation: fadeInDown 1.2s ease;
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    header p {
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    /* ======== NAVBAR ======== */
+   /* nav {
+      background: #4b2c7a;
+      text-align: center;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+      animation: fadeInDown 1.5s ease;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 18px;
+      font-weight: 600;
+      font-size: 1.05em;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #f7c873;
+      text-shadow: 0 0 10px rgba(255, 210, 120, 0.8);
+      transform: scale(1.1);
+    }*/
+    nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+      
+
+    /* ======== RIGHTS SECTION ======== */
+    .rights {
+      padding: 70px 25px;
+      background: linear-gradient(160deg, #fff, #f5f2ff);
+      text-align: center;
+      border-radius: 20px;
+      margin: 60px auto;
+      max-width: 1100px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 1.5s ease;
+    }
+
+    .rights h2 {
+      font-size: 2em;
+      color: #6a3fa0;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    .rights h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #a0571b;
+      margin: 10px auto;
+      border-radius: 5px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      width: 290px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(160,87,27,0.2), transparent 60%);
+      transform: rotate(45deg);
+      transition: opacity 0.5s;
+      opacity: 0;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: #4b2c7a;
+      font-size: 1.3em;
+    }
+
+    .card p {
+      font-size: 0.98em;
+      color: #444;
+    }
+
+    /* ======== MAIN SECTIONS ======== */
+    main {
+      padding: 50px 25px;
+      max-width: 950px;
+      margin: auto;
+      animation: fadeIn 2s ease;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    section h2 {
+      color: #6a3fa0;
+      border-bottom: 3px solid #a0571b;
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      font-size: 1.8em;
+    }
+
+    p, ul {
+      font-size: 1.05em;
+      color: #333;
+    }
+
+    ul {
+      margin-left: 25px;
+      list-style-type: disc;
+    }
+
+    .highlight {
+      background-color: #eef4ff;
+      padding: 15px 20px;
+      border-left: 6px solid #6a3fa0;
+      margin-top: 15px;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    /* ======== FOOTER ======== */
+    footer {
+      background: linear-gradient(135deg, #6a3fa0, #a0571b);
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      font-size: 0.95em;
+      margin-top: 50px;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+    }
+
+    /* ======== ANIMATIONS ======== */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* ======== RESPONSIVE ======== */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2em;
+      }
+
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 10px;
+      }
+
+      section h2 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Samaritan Law Awareness</h1>
+    <p>Know your rights and responsibilities to help save lives</p>
+  </header>
+
+  <nav>
+        <div class="logo">Medi<span>lex</span></div>
+        <div class="nav-links">
+            <a href="m.html">Home</a>
+            <a href="gl.html">Government Law</a>
+            <a href="ind1.html">Template</a>
+            <a href="t.html">Person Info</a>
+        </div>
+    </nav>
+
+  <section class="rights">
+    <h2>Your Rights Under the Law</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>⚖️ Legal Protection</h3>
+        <p>Helpers are not liable for injury or death of victims while providing assistance in good faith.</p>
+      </div>
+      <div class="card">
+        <h3>🚫 No Harassment</h3>
+        <p>Police and hospitals cannot force you to reveal your identity or stay against your will.</p>
+      </div>
+      <div class="card">
+        <h3>💙 Free & Voluntary</h3>
+        <p>You can choose to stay anonymous and are not bound to pay hospital costs.</p>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>
+        The Samaritan Law is designed to protect and encourage individuals who assist those in emergencies.
+        It ensures that people acting in good faith to help someone in need are not penalized for unintentional harm caused while providing aid.
+      </p>
+      <div class="highlight">
+        <strong>Key Point:</strong> Acting as a Good Samaritan is both a moral and legal responsibility.
+      </div>
+    </section>
+
+    <section id="rules">
+      <h2>Basic Rules</h2>
+      <ul>
+        <li>Offer immediate assistance to individuals in emergency situations.</li>
+        <li>Do not expect compensation for helping unless specified by law.</li>
+        <li>Act in good faith and with reasonable care.</li>
+        <li>Do not abandon the person once you begin helping.</li>
+        <li>Contact emergency services promptly.</li>
+      </ul>
+    </section>
+
+    <section id="guidelines">
+      <h2>Government Guidelines</h2>
+      <ul>
+        <li>Good Samaritans are legally protected from liability when helping in emergencies.</li>
+        <li>Medical professionals should provide aid as per standard protocols.</li>
+        <li>Document the assistance given, if possible, to avoid misunderstandings.</li>
+        <li>Spread awareness about the law in schools, workplaces, and communities.</li>
+      </ul>
+      <p>For more information, visit the official government website or contact local authorities.</p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Government of India | Samaritan Law Awareness
+  </footer>
+</body>
+</html>

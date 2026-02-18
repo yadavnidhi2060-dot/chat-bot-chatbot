@@ -1,0 +1,153 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #111;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.navbar nav a:hover {
+  color: #000;
+}
+
+.btn {
+  background: #111;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: #444;
+}
+
+/* Hero Section */
+.hero {
+  padding: 80px 60px;
+  background: #f9f9f9;
+}
+
+.hero-copy h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.hero-copy p {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Floated Image */
+.float-img {
+  float: right;
+  margin: 0 0 15px 20px;
+  width: 220px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Services Section */
+.services {
+  text-align: center;
+  padding: 60px;
+  background: #fff;
+}
+
+.services h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.service-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 30px;
+  border-radius: 12px;
+  width: 260px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.icon {
+  background: #111;
+  color: #fff;
+  font-size: 22px;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #f5f5f5;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .float-img {
+    float: none;
+    display: block;
+    margin: 20px auto;
+    width: 180px;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .service-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}

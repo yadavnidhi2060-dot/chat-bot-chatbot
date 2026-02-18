@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medilex - Medical & Legal Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            color: #f0f0f0;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 80px;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .btn-group a {
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            background: #667eea;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-secondary:hover {
+            background: #fff;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* Cards Section */
+        .cards-section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        /* Doctor Container */
+        #doctorContainer {
+            display: none;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 900px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        #doctorContainer h3 {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            color: #667eea;
+        }
+
+        #doctorContainer ul {
+            list-style: none;
+        }
+
+        #doctorContainer li {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s;
+        }
+
+        #doctorContainer li:last-child {
+            border-bottom: none;
+        }
+
+        #doctorContainer li:hover {
+            background: #f5f5f5;
+        }
+
+        /* Services Section */
+        .services {
+            background: #fff;
+            padding: 80px 20px;
+            margin-top: 60px;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 60px;
+            color: #333;
+            position: relative;
+        }
+
+        .services h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            font-size: 2.5em;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .service-card h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .service-card p {
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(17, 17, 17, 0.95);
+            color: #aaa;
+            margin-top: 0;
+        }
+
+        footer p {
+            font-size: 1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-group a {
+                width: 200px;
+                text-align: center;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Medi<span>lex</span></div>
+        <div class="nav-links">
+            <a href="m.html">Home</a>
+            <a href="gl.html">Government Law</a>
+            <a href="ind1.html">Template</a>
+            <a href="t.html">Person Info</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Medilex</h1>
+        <p>Get Medical or Legal Services Instantly</p>
+
+        <div class="btn-group">
+            <a class="btn-primary" href="index.html">Open Chatbot</a>
+            <a class="btn-secondary" href="login .html">Signup</a>
+           <!-- <form action="index.php" method="POST">
+            <button class="btn-secondary" type="submit">Signup</button>
+            </form>-->
+
+           <!-- <a class="btn-secondary" href="login .html">Signup</a>
+                <form action="index.php" method="POST">
+                <a class="btn-secondary" href="">Signup</a>
+                <button type="btn-secondary"></button>
+            </form>-->
+        </div>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="cards-section">
+        <div class="cards-grid">
+            <a href="doctors.html" class="card">
+                <div class="card-icon">👨‍⚕️</div>
+                <h3>Find Doctors</h3>
+                <p>Search and connect with qualified healthcare professionals near you.</p>
+            </a>
+
+            <a href="medicine.html" class="card">
+                <div class="card-icon">💊</div>
+                <h3>Medicine Info</h3>
+                <p>Check dosage, side effects, and interactions instantly.</p>
+            </a>
+
+            <a href="lawyer.html" class="card">
+                <div class="card-icon">⚖️</div>
+                <h3>Find Lawyers</h3>
+                <p>Choose your preferred lawyer and time slot online.</p>
+            </a>
+
+            <a href="Health-tips.html" class="card">
+                <div class="card-icon">📰</div>
+                <h3>Health Tips</h3>
+                <p>Read the latest articles and wellness blogs.</p>
+            </a>
+        </div>
+
+        <!-- Doctor List -->
+        <div id="doctorContainer">
+            <h3>Doctors Near Gorakhpur</h3>
+            <ul id="doctorList"></ul>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <div class="service-icon">+</div>
+                <h3>Medical Care</h3>
+                <p>Comprehensive primary care, diagnostics and professional treatments.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">❤</div>
+                <h3>Emergency Services</h3>
+                <p>24/7 urgent care with rapid response for critical situations.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚖</div>
+                <h3>Legal Support</h3>
+                <p>Healthcare compliance, medical law, and comprehensive legal assistance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Medilex. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleDoctorList() {
+            const container = document.getElementById('doctorContainer');
+            container.style.display = container.style.display === "none" ? "block" : "none";
+
+            if (container.style.display === "block") {
+                loadDoctors();
+            }
+        }
+
+        function loadDoctors() {
+            fetch('doctors.json')
+                .then(response => response.json())
+                .then(data => {
+                    const ul = document.getElementById('doctorList');
+                    ul.innerHTML = "";
+                    data.forEach(doc => {
+                        const li = document.createElement('li');
+                        li.textContent = `${doc.name} - ${doc.qualification}, ${doc.specialization}`;
+                        ul.appendChild(li);
+                    });
+                })
+                .catch(error => console.log("Error loading doctors:", error));
+        }
+    </script>
+</body>
+</html>
